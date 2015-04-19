@@ -26,9 +26,11 @@ public class ItemJSONParser {
                 }
 
                 for (int i = 0; i < resultCount; i++) {
+
                     String itemX = "item" + i;
                     Item item = new Item();
                     JSONObject itemObject = new JSONObject(object.getString(itemX));
+                    item.setId(i+"");
 
                     //basicInfo
                     JSONObject basicInfo = new JSONObject(itemObject.getString("basicInfo"));

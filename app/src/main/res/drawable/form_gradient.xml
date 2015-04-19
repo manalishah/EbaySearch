@@ -6,12 +6,12 @@
 
         android:centerColor="#F1DCF7"
         android:endColor="#FFFFFF"
-        android:gradientRadius="200"
+        android:gradientRadius="100"
         android:startColor="#F1DCF7"
         android:type="radial"
         android:angle="270"
-        android:centerX="50%"
-        android:centerY="50%"
+        android:centerX="20%"
+        android:centerY="20%"
 
      />
 

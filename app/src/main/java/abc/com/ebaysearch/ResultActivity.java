@@ -38,6 +38,8 @@ import java.util.List;
 
 public class ResultActivity extends ListActivity {
 
+
+
     private List<Item> itemList;
     private Boolean noResults = Boolean.FALSE;
     private TextView result;
@@ -106,6 +108,9 @@ public class ResultActivity extends ListActivity {
         }
     }
 
+    public List<Item> getItemList() {
+        return itemList;
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

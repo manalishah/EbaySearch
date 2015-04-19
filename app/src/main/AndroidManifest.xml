@@ -27,6 +27,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="abc.com.ebaysearch.MainActivity" />
         </activity>
+        <activity
+            android:name=".DetailsActivity"
+            android:label="DetailsActivity"
+            android:parentActivityName=".ResultActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="abc.com.ebaysearch.ResultActivity" />
+        </activity>
     </application>
 
 </manifest>

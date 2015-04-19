@@ -11,6 +11,7 @@ public class Item {
 
     String object;
     // basicInfo
+    private String id;
     private String title;
     private String viewItemURL;
     private String galleryURL;
@@ -246,5 +247,13 @@ public class Item {
 
     public void setBitmap(Bitmap bitmap) {
         this.bitmap = bitmap;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

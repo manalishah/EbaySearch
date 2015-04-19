@@ -12,4 +12,5 @@
     </string-array>
     <string name="title_activity_result">ResultActivity</string>
     <string name="item_name_placeholder">Item name</string>
+    <string name="title_activity_activity_details">activity_details</string>
 </resources>
