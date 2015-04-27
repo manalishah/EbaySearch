@@ -3,8 +3,8 @@ package abc.com.ebaysearch;
 import abc.com.ebaysearch.model.Item;
 import abc.com.ebaysearch.parser.ItemJSONParser;
 
-import java.io.IOException;
 import java.io.InputStream;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.net.URL;
@@ -14,26 +14,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.net.*;
-import android.widget.Toast;
 
 
 import org.json.JSONObject;
-
-import java.io.InputStream;
-import java.util.List;
 
 
 public class ResultActivity extends ListActivity {
@@ -67,37 +59,39 @@ public class ResultActivity extends ListActivity {
         resultFor = (TextView)findViewById(R.id.resultFor);
         Intent i = getIntent();
         String keywords = i.getStringExtra(MainActivity.KEYWORD);
-        String min = i.getStringExtra(MainActivity.MIN);
-        String max = i.getStringExtra(MainActivity.MAX);
-        String sort = i.getStringExtra(MainActivity.SORT);
+        String url = i.getStringExtra(MainActivity.URL);
+//        String min = i.getStringExtra(MainActivity.MIN);
+//        String max = i.getStringExtra(MainActivity.MAX);
+//        String sort = i.getStringExtra(MainActivity.SORT);
         tasks = new ArrayList<>();
-        String url = "http://default-environment-d94dmawcvp.elasticbeanstalk.com/index.php?keywords=";
-        url += keywords;
+//        String url = "http://default-environment-d94dmawcvp.elasticbeanstalk.com/index.php?keywords=";
+//        url += keywords;
+//        resultString = "Results for " + URLDecoder.decode(keywords);
         resultString = "Results for " + keywords;
-        if(!min.matches("")){
-            url += "&MinPrice=" + min;
-
-        }
-
-        if(!max.matches("")){
-            url += "&MaxPrice=" + max;
-
-        }
-        url += "&sortOrder=";
-        if(sort.matches("Best Match")){
-            url += "BestMatch";
-        }
-        else if(sort.matches("Price: highest first")){
-            url += "CurrentPriceHighest";
-        }
-        else if(sort.matches("Price + Shipping: highest first")){
-            url += "PricePlusShippingHighest";
-        }
-        else{
-            url += "PricePlusShippingLowest";
-        }
-
-        url += "&paginationInput=5&pageNo=1";
+//        if(!min.matches("")){
+//            url += "&MinPrice=" + min;
+//
+//        }
+//
+//        if(!max.matches("")){
+//            url += "&MaxPrice=" + max;
+//
+//        }
+//        url += "&sortOrder=";
+//        if(sort.matches("Best Match")){
+//            url += "BestMatch";
+//        }
+//        else if(sort.matches("Price: highest first")){
+//            url += "CurrentPriceHighest";
+//        }
+//        else if(sort.matches("Price + Shipping: highest first")){
+//            url += "PricePlusShippingHighest";
+//        }
+//        else{
+//            url += "PricePlusShippingLowest";
+//        }
+//
+//        url += "&paginationInput=5&pageNo=1";
 
 
 

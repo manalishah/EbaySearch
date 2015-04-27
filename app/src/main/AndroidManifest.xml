@@ -10,8 +10,11 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/app_id" />
         <activity
-            android:name=".MainActivity"
+            android:name="abc.com.ebaysearch.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,21 +23,31 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ResultActivity"
+            android:name="abc.com.ebaysearch.ResultActivity"
             android:label="@string/title_activity_result"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName="abc.com.ebaysearch.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="abc.com.ebaysearch.MainActivity" />
         </activity>
         <activity
-            android:name=".DetailsActivity"
+            android:name="abc.com.ebaysearch.DetailsActivity"
             android:label="DetailsActivity"
-            android:parentActivityName=".ResultActivity" >
+            android:parentActivityName="abc.com.ebaysearch.ResultActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="abc.com.ebaysearch.ResultActivity" />
         </activity>
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <provider
+            android:name="com.facebook.FacebookContentProvider"
+            android:authorities="com.facebook.app.FacebookContentProvider823263334426990"
+            android:exported="true" />
     </application>
 
 </manifest>

@@ -8,7 +8,6 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.nfc.Tag;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,15 +18,19 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.net.Uri;
+import android.widget.Toast;
 
-import org.json.JSONObject;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.share.Sharer;
+import com.facebook.share.model.ShareLinkContent;
+import com.facebook.share.widget.ShareDialog;
 
 import java.io.InputStream;
 import java.net.URL;
 import java.util.List;
-
-import abc.com.ebaysearch.model.Item;
-import abc.com.ebaysearch.parser.ItemJSONParser;
 
 /**
  * Created by manali on 4/18/15.
@@ -37,7 +40,7 @@ public class DetailsActivity extends Activity {
     private static final String TAG = "manalisMessage";
     List<MyTask> tasks;
     ProgressBar pb;
-    Item item;
+    private Item item;
     TextView n1;
     TextView n2;
     TextView n3;
@@ -59,7 +62,9 @@ public class DetailsActivity extends Activity {
     LinearLayout l6;
     LinearLayout l7;
     LinearLayout l8;
-
+    CallbackManager callbackManager;
+    ShareDialog shareDialog;
+    String description;
 
     TextView Title;
     TextView Price;
@@ -70,9 +75,21 @@ public class DetailsActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
 
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        callbackManager = CallbackManager.Factory.create();
+
+
+        ImageView f = (ImageView)findViewById(R.id.F);
+        f.setOnClickListener(new ImageView.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                login();
+            }
+        });
+
         Intent intent = getIntent();
         item = new Item();
-
+        description = "";
 
         item.setTitle(intent.getStringExtra("Title"));
         item.setViewItemURL(intent.getStringExtra("ViewItemURL"));
@@ -134,6 +151,12 @@ public class DetailsActivity extends Activity {
         final Button sellerInfo = (Button)findViewById(R.id.sellerInfo);
         final Button shippingInfo = (Button)findViewById(R.id.shippingInfo);
         final Button buyNow = (Button)findViewById(R.id.buyNow);
+        final ImageView topRated = (ImageView)findViewById(R.id.topRated);
+
+        if(item.getTopRatedListing() == "false"){
+            topRated.setVisibility(View.INVISIBLE);
+        }
+
         basicInfo.setBackgroundColor(Color.BLUE);
         sellerInfo.setBackgroundColor(Color.WHITE);
         shippingInfo.setBackgroundColor(Color.WHITE);
@@ -153,6 +176,7 @@ public class DetailsActivity extends Activity {
         l6.setVisibility(View.GONE);
         l7.setVisibility(View.GONE);
         l8.setVisibility(View.GONE);
+
 
 
         basicInfo.setOnClickListener(new Button.OnClickListener() {
@@ -359,9 +383,69 @@ public class DetailsActivity extends Activity {
         n3.setText("Buying Format");
         v3.setText(item.getListingType());
 
+        description = p + " " + item.getLocation();
+
+
+    }
+
+    public void login() {
 
 
 
+        shareDialog = new ShareDialog(this);
+        // this part is optional
+
+
+
+        String desc = description;
+        String title=item.getTitle();
+        String link = item.getViewItemURL();
+        String url=item.getGalleryURL();
+
+
+
+        if (ShareDialog.canShow(ShareLinkContent.class)) {
+            ShareLinkContent linkContent = new ShareLinkContent.Builder()
+                    .setContentTitle(title)
+                    .setContentDescription(desc)
+                    .setContentUrl(Uri.parse(link))
+                    .build();
+
+            shareDialog.show(linkContent);
+        }
+
+        Log.i(TAG, "afngersharig");
+        shareDialog.registerCallback(callbackManager, new FacebookCallback<Sharer.Result>() {
+            @Override
+            public void onSuccess(Sharer.Result result) {
+                Toast.makeText(getApplicationContext(), "Facebook Post Successful", Toast.LENGTH_SHORT).show();
+                Log.i(TAG, "Success");
+
+
+            }
+
+            @Override
+            public void onCancel() {
+                Toast.makeText(getApplicationContext(), "Facebook Post Cancelled", Toast.LENGTH_SHORT).show();
+                Log.i(TAG, "cancel");
+            }
+
+            @Override
+            public void onError(FacebookException e) {
+                Toast.makeText(getApplicationContext(), "Facebook Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.i(TAG, "error");
+
+
+            }
+
+        });
+
+    }
+
+    @Override
+    protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
     private class MyTask extends AsyncTask<String, String, String> {

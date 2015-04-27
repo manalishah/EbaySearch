@@ -3,8 +3,6 @@ package abc.com.ebaysearch;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.util.Log;
 import android.view.Gravity;
@@ -14,10 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.io.InputStream;
-import java.net.URL;
 import java.util.List;
 
 import abc.com.ebaysearch.model.Item;

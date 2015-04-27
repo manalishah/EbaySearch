@@ -1,136 +1,259 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    tools:context="abc.com.ebaysearch.MainActivity"
     android:background = "@drawable/form_gradient"
     >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="eBay Search"
-        android:id="@+id/textView"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="67dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Keywords"
-        android:id="@+id/textView2"
-        android:elegantTextHeight="true"
-        android:focusableInTouchMode="false"
-        android:textSize="25dp"
-        android:layout_marginTop="58dp"
-        android:minWidth="200dp"
-        android:maxWidth="200dp"
-        android:nestedScrollingEnabled="false"
-        android:layout_below="@+id/textView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="120dp"
+        android:layout_gravity="center_vertical"
+        >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Price From"
-        android:id="@+id/textView3"
-        android:textSize="25dp"
-        android:layout_below="@+id/textView2"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="10dp"
+            android:text="eBay Search"
+            android:id="@+id/head"
+            android:gravity="center|bottom"
+            android:textSize="25dp"
+            android:textColor="#000975"
+            />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Price To"
-        android:id="@+id/textView4"
-        android:textSize="25dp"
-        android:layout_below="@+id/textView3"
-        android:layout_alignLeft="@+id/textView3"
-        android:layout_alignStart="@+id/textView3" />
+    </LinearLayout>
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/keywords"
-        android:layout_alignBottom="@+id/textView2"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:minWidth="200dp" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        >
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/minprice"
-        android:minWidth="200dp"
-        android:layout_alignBottom="@+id/textView3"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
+            >
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/maxprice"
-        android:layout_alignBottom="@+id/textView4"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignLeft="@+id/minprice"
-        android:layout_alignStart="@+id/minprice" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="10dp"
+                android:text="Keywords"
+                android:id="@+id/name1"
+                android:gravity="bottom"
+                android:textColor="#3D253D"
+                android:textSize="16dp"
+                />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Search"
-        android:id="@+id/search"
-        android:layout_marginTop="94dp"
-        android:layout_below="@+id/textView4"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+            <EditText
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Clear"
-        android:id="@+id/clear"
-        android:layout_alignTop="@+id/search"
-        android:layout_toLeftOf="@+id/search"
-        android:layout_toStartOf="@+id/search" />
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="fill_parent"
+                android:id="@+id/keywords"
+                android:gravity="center_vertical"
 
-    <Spinner
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/sortBy"
-        android:spinnerMode="dropdown"
-        android:layout_below="@+id/textView4"
-        android:layout_alignLeft="@+id/maxprice"
-        android:layout_alignStart="@+id/maxprice"
-        android:entries="@array/array_name"
-        android:layout_alignBottom="@+id/sort" />
+                />
+        </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Sort By"
-        android:id="@+id/sort"
-        android:textSize="25dp"
-        android:layout_below="@+id/textView4"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
+            >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/error"
-        android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/textView"
-        android:layout_alignStart="@+id/textView"
-        android:layout_marginBottom="40dp"
-        android:minWidth="300dp"
-        android:visibility="invisible" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="10dp"
+                android:text="Price From"
+                android:id="@+id/name2"
+                android:gravity="bottom"
+                android:textColor="#3D253D"
+                android:textSize="16dp"
+                />
+
+            <EditText
+
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="fill_parent"
+                android:id="@+id/minprice"
+                android:gravity="center_vertical"
+                android:inputType="numberDecimal"
+
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="10dp"
+                android:text="Price To"
+                android:id="@+id/Max"
+                android:gravity="bottom"
+                android:textColor="#3D253D"
+                android:textSize="16dp"
+                />
 
 
-</RelativeLayout>
+            <EditText
+
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="fill_parent"
+                android:id="@+id/maxprice"
+                android:gravity="center_vertical"
+                android:inputType="numberDecimal"
+
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
+            android:id="@+id/l4"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="10dp"
+                android:text="Sort By"
+                android:id="@+id/sort"
+                android:gravity="bottom"
+                android:textColor="#3D253D"
+                android:textSize="16dp"
+                />
+
+            <Spinner
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="fill_parent"
+                android:layout_gravity="bottom"
+                android:id="@+id/sortBy"
+                android:spinnerMode="dropdown"
+                android:entries="@array/array_name"
+                />
+
+        </LinearLayout>
+
+
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_marginTop="20dp"
+            android:layout_height="50dp">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="fill_parent">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1">
+
+                <Button
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Clear"
+                    android:id="@+id/clear"
+                    android:layout_gravity="right"
+                    android:background="#ffffff"
+                    android:paddingLeft="7dp"
+                    android:paddingRight="7dp"
+                    android:layout_marginRight="3dp"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="fill_parent">
+
+
+                <Button
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Search"
+                    android:id="@+id/search"
+                    android:layout_gravity="left"
+                    android:background="#ffffff"
+                    android:paddingLeft="3dp"
+                    android:paddingRight="3dp"
+                    android:layout_marginLeft="10dp"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_marginTop="30dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
+
+            >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/error"
+                android:gravity="center"
+                android:textColor="#FF0000"
+
+                />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
